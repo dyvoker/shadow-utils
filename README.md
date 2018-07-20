@@ -35,6 +35,7 @@ Using bitmap:
 ```java
 Bitmap iconHeart = BitmapFactory.decodeResource(getResources(), R.drawable.ic_heart);
 Bitmap iconHeartWithShadow = ShadowUtils.addShadow(iconHeart, 0x80000000, 3, 2, 2);
+iconHeart.recycle();
 BitmapDrawable bitmapDrawable = new BitmapDrawable(iconHeartWithShadow);
 FrameLayout bitmapSample = findViewById(R.id.bitmap_sample);
 bitmapSample.setBackgroundDrawable(bitmapDrawable);
