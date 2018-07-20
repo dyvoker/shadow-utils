@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 			2,
 			2
 		);
+		iconHeart.recycle();
 		BitmapDrawable bitmapDrawable = new BitmapDrawable(iconHeartWithShadow);
 		FrameLayout bitmapSample = findViewById(R.id.bitmap_sample);
 		bitmapSample.setBackgroundDrawable(bitmapDrawable);

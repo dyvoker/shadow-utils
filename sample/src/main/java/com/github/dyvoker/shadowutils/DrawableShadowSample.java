@@ -1,7 +1,5 @@
 package com.github.dyvoker.shadowutils;
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -10,10 +8,8 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.TypedValue;
 
 import com.github.dyvoker.shadow_lib.CanvasWithShadow;
-import com.github.dyvoker.shadow_lib.ShadowUtils;
 
 /**
  * Drawable for testing shadows.
