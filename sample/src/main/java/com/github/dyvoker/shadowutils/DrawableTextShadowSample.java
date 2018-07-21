@@ -22,6 +22,8 @@ public class DrawableTextShadowSample extends Drawable {
 	@NonNull
 	private final String text;
 
+	private CanvasWithShadow shadow;
+
 	public DrawableTextShadowSample(@NonNull String text, float textSizeDp) {
 		paint.setColor(Color.WHITE);
 		float textSize = TypedValue.applyDimension(
@@ -35,12 +37,31 @@ public class DrawableTextShadowSample extends Drawable {
 
 	@Override
 	public void draw(@NonNull Canvas canvas) {
-		CanvasWithShadow shadow = new CanvasWithShadow(canvas);
+		if (shadow != null) {
+			// Draw cached image.
+			shadow.draw(
+				canvas,
+				0x80000000,
+				2,
+				1,
+				1,
+				shadow.isSameSize(canvas)
+			);
+			return;
+		}
+		shadow = new CanvasWithShadow(canvas);
 		Canvas tempCanvas = shadow.getCanvas();
 		float textY = paint.getTextSize();
 		tempCanvas.drawText(text, 50, textY, paint);
 		// Draw shadow.
-		shadow.draw(canvas, 0x80000000, 2, 1, 1);
+		shadow.draw(
+			canvas,
+			0x80000000,
+			2,
+			1,
+			1,
+			shadow.isSameSize(canvas)
+		);
 	}
 
 	@Override

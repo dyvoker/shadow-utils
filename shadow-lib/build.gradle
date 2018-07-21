@@ -5,7 +5,7 @@ apply plugin: 'com.jfrog.bintray'
 ext {
 	publishedGroupId = 'com.github.dyvoker'
 	artifact = 'shadow-lib'
-	libraryVersion = '1.0'
+	libraryVersion = '1.1'
 
 	libraryName = 'ShadowLib'
 	libraryDescription = 'Utils for creation a shadow on bitmap or canvas.'
@@ -31,7 +31,7 @@ android {
 	defaultConfig {
 		minSdkVersion 14
 		targetSdkVersion 27
-		versionCode 1
+		versionCode 2
 		versionName libraryVersion
 	}
 

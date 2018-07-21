@@ -19,13 +19,27 @@ public class DrawableShadowSample extends Drawable {
 
 	private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
+	private CanvasWithShadow shadow;
+
 	public DrawableShadowSample() {
 		paint.setColor(Color.WHITE);
 	}
 
 	@Override
 	public void draw(@NonNull Canvas canvas) {
-		CanvasWithShadow shadow = new CanvasWithShadow(canvas);
+		if (shadow != null) {
+			// Draw cached image.
+			shadow.draw(
+				canvas,
+				0x80000000,
+				3,
+				2,
+				2,
+				shadow.isSameSize(canvas)
+			);
+			return;
+		}
+		shadow = new CanvasWithShadow(canvas);
 		Canvas tempCanvas = shadow.getCanvas();
 
 		// Draw primitives.
@@ -36,7 +50,14 @@ public class DrawableShadowSample extends Drawable {
 		tempCanvas.drawRect(centerX, centerY, centerX + radius, centerY + radius, paint);
 
 		// Draw shadow.
-		shadow.draw(canvas, 0x80000000, 3, 2, 2);
+		shadow.draw(
+			canvas,
+			0x80000000,
+			3,
+			2,
+			2,
+			shadow.isSameSize(canvas)
+		);
 	}
 
 	@Override
