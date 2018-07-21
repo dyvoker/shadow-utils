@@ -21,7 +21,7 @@ private CanvasWithShadow shadow;
 public void draw(@NonNull Canvas canvas) {
     if (shadow != null) {
         // Draw cached image.
-        shadow.draw(canvas, 0x80000000, 3, 2, 2, shadow.isSameSize(canvas));
+        shadow.draw(canvas, 0x80000000, 3, 2, 2, !shadow.isSameSize(canvas));
         return;
     }
     shadow = new CanvasWithShadow(canvas);
@@ -35,7 +35,7 @@ public void draw(@NonNull Canvas canvas) {
     tempCanvas.drawRect(centerX, centerY, centerX + radius, centerY + radius, paint);
 
     // Draw shadow.
-    shadow.draw(canvas, 0x80000000, 3, 2, 2, shadow.isSameSize(canvas));
+    shadow.draw(canvas, 0x80000000, 3, 2, 2, !shadow.isSameSize(canvas));
 }
 ```
 
