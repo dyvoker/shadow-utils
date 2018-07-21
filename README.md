@@ -8,26 +8,34 @@
 Add dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.dyvoker:shadow-lib:1.0'
+    implementation 'com.github.dyvoker:shadow-lib:1.1'
 }
 ```
 
 Using canvas:
 ```java
+...
+private CanvasWithShadow shadow;
+...
 @Override
 public void draw(@NonNull Canvas canvas) {
-   CanvasWithShadow shadow = new CanvasWithShadow(canvas);
-   Canvas tempCanvas = shadow.getCanvas();
+    if (shadow != null) {
+        // Draw cached image.
+        shadow.draw(canvas, 0x80000000, 3, 2, 2, shadow.isSameSize(canvas));
+        return;
+    }
+    shadow = new CanvasWithShadow(canvas);
+    Canvas tempCanvas = shadow.getCanvas();
 
-   // Draw primitives.
-   float centerX = tempCanvas.getWidth() / 2;
-   float centerY = tempCanvas.getHeight() / 2;
-   float radius = Math.min(centerX, centerY) - 50.0f;
-   tempCanvas.drawCircle(centerX, centerY, radius, paint);
-   tempCanvas.drawRect(centerX, centerY, centerX + radius, centerY + radius, paint);
+    // Draw primitives.
+    float centerX = tempCanvas.getWidth() / 2;
+    float centerY = tempCanvas.getHeight() / 2;
+    float radius = Math.min(centerX, centerY) - 50.0f;
+    tempCanvas.drawCircle(centerX, centerY, radius, paint);
+    tempCanvas.drawRect(centerX, centerY, centerX + radius, centerY + radius, paint);
 
-   // Draw shadow.
-   shadow.draw(canvas, 0x80000000, 3, 2, 2);
+    // Draw shadow.
+    shadow.draw(canvas, 0x80000000, 3, 2, 2, shadow.isSameSize(canvas));
 }
 ```
 
