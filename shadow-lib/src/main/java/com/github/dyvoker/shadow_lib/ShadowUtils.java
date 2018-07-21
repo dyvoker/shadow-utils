@@ -11,6 +11,8 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.util.TypedValue;
 
+import com.github.dyvoker.android_utils.DpUtils;
+
 /**
  * Static methods for work with shadows.
  */
@@ -70,9 +72,9 @@ public class ShadowUtils {
 		float offsetYDp
 	) {
 		// Convert all dp dimensions to px.
-		float shadowRadius = dpToPx(shadowRadiusDp);
-		float offsetX = dpToPx(offsetXDp);
-		float offsetY = dpToPx(offsetYDp);
+		float shadowRadius = DpUtils.dpToPx(shadowRadiusDp);
+		float offsetX = DpUtils.dpToPx(offsetXDp);
+		float offsetY = DpUtils.dpToPx(offsetYDp);
 
 		// Create matrix for scale.
 		final Matrix scaleToFitMatrix = new Matrix();
@@ -109,19 +111,4 @@ public class ShadowUtils {
 		maskBitmap.recycle();
 		return result;
 	}
-
-	/**
-	 * Convert dp to px.
-	 *
-	 * @param dp Size in dp.
-	 * @return Size in px.
-	 */
-	private static float dpToPx(float dp) {
-		return TypedValue.applyDimension(
-			TypedValue.COMPLEX_UNIT_DIP,
-			dp,
-			Resources.getSystem().getDisplayMetrics()
-		);
-	}
-
 }

@@ -44,6 +44,7 @@ android {
 
 dependencies {
 	api 'com.android.support:support-annotations:27.1.1'
+	implementation 'com.github.dyvoker:android-utils:0.1'
 }
 
 task sourcesJar(type: Jar) {
