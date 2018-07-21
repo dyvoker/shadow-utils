@@ -35,7 +35,7 @@ public class DrawableShadowSample extends Drawable {
 				3,
 				2,
 				2,
-				shadow.isSameSize(canvas)
+				!shadow.isSameSize(canvas)
 			);
 			return;
 		}
@@ -56,7 +56,7 @@ public class DrawableShadowSample extends Drawable {
 			3,
 			2,
 			2,
-			shadow.isSameSize(canvas)
+			!shadow.isSameSize(canvas)
 		);
 	}
 

@@ -45,7 +45,7 @@ public class DrawableTextShadowSample extends Drawable {
 				2,
 				1,
 				1,
-				shadow.isSameSize(canvas)
+				!shadow.isSameSize(canvas)
 			);
 			return;
 		}
@@ -60,7 +60,7 @@ public class DrawableTextShadowSample extends Drawable {
 			2,
 			1,
 			1,
-			shadow.isSameSize(canvas)
+			!shadow.isSameSize(canvas)
 		);
 	}
 
